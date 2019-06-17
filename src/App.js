@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Accounting from './components/Accounting'
+import Ecommerce from './components/Ecommerce'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    /*Router*/
+    <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+      <Route render= {({location})=>(
+                <Switch location={location}>
+                  <Route path="/" component={Accounting} exact />
+                  <Route path="/ecommerce" component={Ecommerce} exact />
+                  />
+                </Switch>
+      )}/>
+    </BrowserRouter>
   );
 }
 
